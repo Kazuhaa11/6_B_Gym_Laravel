@@ -1,13 +1,14 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\layananController;
 use App\Http\Controllers\bookingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/register', [ProfileController::class, 'register']);
-Route::post('/login', [ProfileController::class, 'login']);
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     // Mengambil data profil

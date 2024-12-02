@@ -6,6 +6,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::post('/register', [ProfileController::class, 'register']);
+Route::post('/login', [ProfileController::class, 'login']);
+
 Route::middleware('auth:sanctum')->group(function () {
     // Mengambil data profil
     Route::get('/profile', [ProfileController::class, 'getProfile']);

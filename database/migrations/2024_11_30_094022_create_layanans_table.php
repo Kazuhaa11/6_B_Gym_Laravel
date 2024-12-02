@@ -4,29 +4,30 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateLayananTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('layanans', function (Blueprint $table) {
-            $table->id('id_layanan');
-            $table->foreignId('id_trainer')->constrained('trainers', 'id_trainer')->onDelete('cascade');
-            $table->string('nama_layanan');
+        Schema::create('layanan', function (Blueprint $table) {
+            $table->id();
+            $table->string('class_name');
+            $table->string('time_start');
+            $table->string('time_end');
+            $table->string('duration');
+            $table->string('burned_calories');
+            $table->string('instructor');
+            $table->decimal('rating', 2, 1);
+            $table->integer('reviews');
             $table->text('description');
-            $table->enum('tipe_layanan', ['kelas', 'personal', 'alat']);
-            $table->dateTime('jadwal_layanan');
+            $table->enum('state', ['available', 'unavailable']);
+            $table->string('image_path');
+            $table->string('reminder_time');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('layanans');
+        Schema::dropIfExists('layanan');
     }
-};
+}
